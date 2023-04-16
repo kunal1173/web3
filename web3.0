@@ -1,0 +1,51 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+
+using namespace std;
+
+class Car {
+    public:
+        string make;
+        string model;
+        int year;
+        int speed;
+        int x, y, z;
+        int acceleration;
+        int braking;
+
+        void accelerate() {
+            speed += acceleration;
+        }
+
+        void brake() {
+            speed -= braking;
+        }
+};
+
+int main() {
+    Car car1, car2;
+
+    cin >> car1.make >> car1.model >> car1.year >> car1.speed >> car1.x >> car1.y >> car1.z >> car1.acceleration >> car1.braking;
+
+    cin >> car2.make >> car2.model >> car2.year >> car2.speed >> car2.x >> car2.y >> car2.z >> car2.acceleration >> car2.braking;
+
+    car1.accelerate();
+    car1.brake();
+    car2.accelerate();
+    car2.brake();
+
+    int d = sqrt((car1.x-car2.x)*(car1.x-car2.x) + (car1.y-car2.y)*(car1.y-car2.y) + (car1.z-car2.z)*(car1.z-car2.z));
+    int r = car2.speed - car1.speed;
+    float t = static_cast<float>(d) / r;
+
+    if(r > 0){
+        cout << "True" << endl;
+        cout << "Time taken for collision = " << t << endl;
+    }
+    else{
+        cout << "False" << endl;
+    }
+
+    return 0;
+}
